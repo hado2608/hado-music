@@ -21,8 +21,8 @@ export default function Page() {
           </div>
         </div>
 
-        {/* Riso texture */}
-        <div style={{
+        {/* Riso texture — animated slow drift */}
+        <div className="riso-animated" style={{
           position: "absolute", width: 1920, height: 1080, left: -188, top: -150,
           backgroundImage: "url('/hado-music/images/riso-texture.png')",
           backgroundSize: "337px 449px",
@@ -184,47 +184,44 @@ export default function Page() {
       </section>
 
       {/* ─── CONTACT + FOOTER ─── */}
-      <section id="contact" style={{ position: "relative", width: "100%", height: 991, overflow: "hidden", flexShrink: 0, backgroundColor: "#4aad9b" }}>
-        <div style={{ position: "absolute", left: "50%", transform: "translateX(-50%)", width: 1440, height: 987, overflow: "hidden", top: 1 }}>
+      <section id="contact" style={{ position: "relative", width: "100%", flexShrink: 0, backgroundColor: "#4aad9b" }}>
+        <div style={{ margin: "0 auto", maxWidth: 1440, display: "flex", flexDirection: "column", alignItems: "center", paddingTop: 86, paddingBottom: 80 }}>
 
-          {/* Heading block — centered */}
-          <div style={{ position: "absolute", left: "calc(50% - 48px)", transform: "translateX(-50%)", top: 86, width: 443, height: 221 }}>
-            {/* Star + "Contact" */}
-            <div style={{ position: "absolute", left: 0, top: 0, width: 421, height: 159, display: "flex", alignItems: "center" }}>
+          {/* Heading: star + "Contact" */}
+          <div style={{ display: "flex", alignItems: "center", marginBottom: 40 }}>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/hado-music/images/star.svg" alt="" aria-hidden style={{ width: 100, height: 100, flexShrink: 0 }} />
+            <p style={{ fontFamily: "'Instrument Serif', serif", fontSize: 114, color: "#262321", lineHeight: 1, margin: 0, whiteSpace: "nowrap", marginLeft: -14 }}>
+              Contact
+            </p>
+          </div>
+
+          {/* Email row — copy icon appears on hover */}
+          <div className="email-row" style={{ display: "flex", alignItems: "center", marginBottom: 16 }}>
+            <p style={{ fontFamily: "'Instrument Sans', sans-serif", fontSize: 24, color: "#262321", lineHeight: 1.3, margin: 0 }}>
+              For any inquiries, please email{" "}
+              <a href="mailto:hado.sings@gmail.com" style={{ fontWeight: 700, color: "#262321" }}>hado.sings@gmail.com</a>
+            </p>
+            <button
+              className="email-copy-btn"
+              aria-label="Copy email address"
+              onClick={() => navigator.clipboard?.writeText("hado.sings@gmail.com")}
+            >
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/hado-music/images/star.svg" alt="" aria-hidden style={{ width: 100, height: 100, flexShrink: 0, position: "absolute", left: 0, top: 0 }} />
-              <p style={{ fontFamily: "'Instrument Serif', serif", fontSize: 114, color: "#262321", lineHeight: 1, margin: 0, whiteSpace: "nowrap", position: "absolute", left: 86, top: 11 }}>
-                Contact
-              </p>
-            </div>
-            {/* Email line */}
-            <div style={{ position: "absolute", left: 92, top: 163, display: "flex", alignItems: "center", gap: 8 }}>
-              <p style={{ fontFamily: "'Instrument Sans', sans-serif", fontSize: 24, color: "#262321", lineHeight: "normal", margin: 0 }}>
-                For any inquiries, please email{" "}
-                <a href="mailto:hado.sings@gmail.com" style={{ fontWeight: 700, color: "#262321" }}>hado.sings@gmail.com</a>
-              </p>
-              {/* Copy icon */}
-              <button
-                aria-label="Copy email address"
-                onClick={() => navigator.clipboard?.writeText("hado.sings@gmail.com")}
-                style={{ background: "none", border: "none", padding: 0, cursor: "pointer", display: "flex", alignItems: "center", flexShrink: 0 }}
-              >
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="/hado-music/images/copy.svg" alt="" style={{ width: 24, height: 24 }} />
-              </button>
-            </div>
+              <img src="/hado-music/images/copy.svg" alt="" style={{ width: 24, height: 24 }} />
+            </button>
           </div>
 
           {/* "or fill out this form:" */}
-          <p style={{ position: "absolute", left: 541, top: 324, fontFamily: "'Instrument Sans', sans-serif", fontSize: 24, color: "#262321", lineHeight: "normal", margin: 0 }}>
+          <p style={{ fontFamily: "'Instrument Sans', sans-serif", fontSize: 24, color: "#262321", lineHeight: 1.3, margin: "0 0 32px" }}>
             or fill out this form:
           </p>
 
-          {/* Form — centered */}
+          {/* Form */}
           <form
             action="https://formspree.io/f/YOUR_FORM_ID"
             method="POST"
-            style={{ position: "absolute", left: "50%", transform: "translateX(-50%)", top: 400, width: 610, display: "flex", flexDirection: "column", gap: 24 }}
+            style={{ width: 610, display: "flex", flexDirection: "column", gap: 24, marginBottom: 64 }}
           >
             <div style={{ backgroundColor: "#ebcea4", border: "1px solid #655f5b", borderRadius: 4, padding: "12px 16px" }}>
               <input
@@ -254,7 +251,7 @@ export default function Page() {
             </div>
             <button
               type="submit"
-              style={{ backgroundColor: "#63ab9e", border: "1px solid #ebcea4", borderRadius: 0, padding: "10px", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center", gap: 4, width: "100%" }}
+              style={{ backgroundColor: "#63ab9e", border: "1px solid #ebcea4", borderRadius: 0, padding: "10px", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center", gap: 4 }}
             >
               <span style={{ fontFamily: "'Instrument Sans', sans-serif", fontWeight: 500, fontSize: 18, color: "#ebcea4" }}>Send</span>
               {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -263,21 +260,15 @@ export default function Page() {
           </form>
 
           {/* Horizontal decorative line */}
-          <div style={{ position: "absolute", left: "50%", transform: "translateX(-50%)", top: 833, width: 460, height: 29, display: "flex", alignItems: "center", justifyContent: "center" }}>
-            <div style={{ transform: "rotate(90deg)", flexShrink: 0 }}>
-              <div style={{ position: "relative", width: 29, height: 460 }}>
-                <div style={{ position: "absolute", inset: "-0.33% -5.09%" }}>
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src="/hado-music/images/deco-line-h.svg" alt="" aria-hidden style={{ width: "100%", height: "100%", display: "block" }} />
-                </div>
-              </div>
-            </div>
+          <div style={{ marginBottom: 24 }}>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/hado-music/images/deco-line-h.svg" alt="" aria-hidden style={{ width: 460, height: 29, display: "block" }} />
           </div>
 
           {/* Footer text */}
-          <div style={{ position: "absolute", left: "50%", transform: "translateX(-50%)", top: 901, textAlign: "center", fontFamily: "'Instrument Sans', sans-serif", fontSize: 16, whiteSpace: "nowrap" }}>
+          <div style={{ textAlign: "center", fontFamily: "'Instrument Sans', sans-serif", fontSize: 16 }}>
             <p style={{ fontWeight: 700, color: "#262321", margin: 0, lineHeight: 1.5 }}>@2026 Ha Do</p>
-            <p style={{ fontStyle: "italic", color: "#b1ebe0", margin: "0", lineHeight: 1.5 }}>handcoded with Trader Joe&rsquo;s hot honey popcorn</p>
+            <p style={{ fontStyle: "italic", color: "#b1ebe0", margin: 0, lineHeight: 1.5 }}>handcoded with Trader Joe&rsquo;s hot honey popcorn</p>
           </div>
 
         </div>

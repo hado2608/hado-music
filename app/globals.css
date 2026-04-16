@@ -37,3 +37,30 @@ a {
 .nav-link:hover::after {
   opacity: 1;
 }
+
+.email-copy-btn {
+  opacity: 0;
+  transition: opacity 0.15s ease;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  vertical-align: middle;
+  margin-left: 6px;
+  flex-shrink: 0;
+}
+
+.email-row:hover .email-copy-btn {
+  opacity: 1;
+}
+
+@keyframes riso-drift {
+  0%   { background-position: 0px 0px; }
+  100% { background-position: 337px 449px; }
+}
+
+.riso-animated {
+  animation: riso-drift 20s linear infinite;
+}
