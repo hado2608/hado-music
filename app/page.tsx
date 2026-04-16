@@ -169,7 +169,7 @@ export default function Page() {
                     What sets Ha apart is the warmth she brings to the bandstand — an intimate, unhurried presence that makes traditional jazz feel both timeless and personal. Her sound carries the elegance of the standards she loves alongside a sweetness that is entirely her own.
                   </p>
                   <p style={{ margin: "16px 0 0", fontWeight: 700 }}>
-                    She is currently working toward her debut album :)
+                    She is currently working toward her debut album coming out this May :)
                   </p>
                 </div>
               </div>
