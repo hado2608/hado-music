@@ -241,10 +241,12 @@ export default function Page() {
 
       {/* ─── CONTACT + FOOTER ─── */}
       <section id="contact" style={{ position: "relative", width: "100%", flexShrink: 0, backgroundColor: "#4aad9b" }}>
+        {/* 610px wrapper — left edge = "C" of Contact, star hangs left via -86px margin */}
         <div style={{ margin: "0 auto", maxWidth: 1440, display: "flex", flexDirection: "column", alignItems: "center", paddingTop: 86, paddingBottom: 80 }}>
+          <div style={{ width: 610 }}>
 
-          {/* Heading: star + "Contact" */}
-          <div style={{ display: "flex", alignItems: "center", marginBottom: 40 }}>
+          {/* Heading — star extends 86px left so "C" sits at wrapper's left edge */}
+          <div style={{ display: "flex", alignItems: "center", marginLeft: -86, marginBottom: 40 }}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src="/hado-music/images/star.svg" alt="" aria-hidden style={{ width: 100, height: 100, flexShrink: 0 }} />
             <p style={{ fontFamily: "'Instrument Serif', serif", fontSize: 114, color: "#262321", lineHeight: 1, margin: 0, whiteSpace: "nowrap", marginLeft: -14 }}>
@@ -252,34 +254,27 @@ export default function Page() {
             </p>
           </div>
 
-          {/* Email — two lines, copy CTA on second line */}
-          <div style={{ textAlign: "center", marginBottom: 16 }}>
-            <p style={{ fontFamily: "'Instrument Sans', sans-serif", fontSize: 24, color: "#262321", lineHeight: 1.3, margin: "0 0 8px" }}>
-              For any inquiries, please email
-            </p>
-            <div className="email-row" style={{ display: "inline-flex", alignItems: "center", gap: 10 }}>
-              <a href="mailto:hado.sings@gmail.com" style={{ fontFamily: "'Instrument Sans', sans-serif", fontWeight: 700, fontSize: 24, color: "#262321", lineHeight: 1.3 }}>
-                hado.sings@gmail.com
-              </a>
-              <button
-                className="email-copy-btn"
-                aria-label="Copy email address"
-                onClick={copyEmail}
-                style={{ fontFamily: "'Instrument Sans', sans-serif", fontSize: 14, fontWeight: 500, color: "#262321", whiteSpace: "nowrap" }}
-              >
-                {copied ? (
-                  "Copied!"
-                ) : (
-                  <>
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src="/hado-music/images/copy.svg" alt="Copy" style={{ width: 22, height: 22 }} />
-                  </>
-                )}
-              </button>
-            </div>
+          {/* "For any inquiries..." — left-aligned to "C" */}
+          <p style={{ fontFamily: "'Instrument Sans', sans-serif", fontSize: 24, color: "#262321", lineHeight: 1.3, margin: "0 0 6px" }}>
+            For any inquiries, please email
+          </p>
+
+          {/* Email + copy — left-aligned to "C" */}
+          <div className="email-row" style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 16 }}>
+            <span style={{ fontFamily: "'Instrument Sans', sans-serif", fontWeight: 700, fontSize: 24, color: "#262321", lineHeight: 1.3 }}>
+              hado.sings@gmail.com
+            </span>
+            <button
+              className="email-copy-btn"
+              aria-label="Copy email address"
+              onClick={copyEmail}
+              style={{ fontFamily: "'Instrument Sans', sans-serif", fontSize: 13, fontWeight: 500, color: "#262321", whiteSpace: "nowrap" }}
+            >
+              {copied ? "Copied!" : "Copy to clipboard"}
+            </button>
           </div>
 
-          {/* "or fill out this form:" */}
+          {/* "or fill out this form:" — left-aligned to "C" */}
           <p style={{ fontFamily: "'Instrument Sans', sans-serif", fontSize: 24, color: "#262321", lineHeight: 1.3, margin: "0 0 32px" }}>
             or fill out this form:
           </p>
@@ -325,6 +320,8 @@ export default function Page() {
               <img src="/hado-music/images/send.svg" alt="" style={{ width: 24, height: 24 }} />
             </button>
           </form>
+
+          </div>{/* end 610px wrapper */}
 
           {/* Horizontal decorative line */}
           <div style={{ marginBottom: 24 }}>
