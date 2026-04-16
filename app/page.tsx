@@ -3,47 +3,50 @@ export default function Page() {
     <div style={{ backgroundColor: "#ddbf93", display: "flex", flexDirection: "column", alignItems: "center" }}>
 
       {/* ─── HERO ─── */}
-      <section id="hero" style={{ position: "relative", width: "100%", height: "100vh", overflow: "hidden" }}>
-        {/* Full-bleed photo — cover, no stretch */}
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src="/hado-music/images/hero-photo.jpg"
-          alt="Ha Do"
-          style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", objectPosition: "center top" }}
-        />
-        <div style={{ position: "absolute", inset: 0, backgroundColor: "rgba(0,0,0,0.15)" }} />
+      <section id="hero" style={{ position: "relative", width: 1440, height: 900, overflow: "hidden", flexShrink: 0 }}>
+        {/* Photo — original Figma positioning (oversized, specific crop) */}
+        <div style={{ position: "absolute", left: -3, top: -493, width: 1444, height: 1926 }}>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/hado-music/images/hero-photo.jpg" alt="Ha Do" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
+          <div style={{ position: "absolute", inset: 0, backgroundColor: "rgba(0,0,0,0.2)" }} />
+        </div>
 
         {/* Riso texture */}
         <div style={{
-          position: "absolute", inset: 0,
+          position: "absolute", width: 1920, height: 1080, left: -450, top: -59,
           backgroundImage: "url('/hado-music/images/riso-texture.png')",
           backgroundSize: "337px 449px",
+          backgroundPosition: "top left",
           mixBlendMode: "soft-light",
           opacity: 0.8,
           pointerEvents: "none",
         }} />
 
-        {/* Nav + subtitle — top right, rotated */}
-        <div style={{ position: "absolute", right: "6%", top: "38%", transform: "rotate(-8.93deg)", transformOrigin: "right center" }}>
-          <div style={{ display: "flex", flexDirection: "column", gap: 12, alignItems: "flex-start" }}>
-            <p style={{ fontFamily: "'Instrument Serif', serif", fontSize: "clamp(28px, 4.8vw, 74px)", color: "#ffedd1", margin: 0, lineHeight: 1, whiteSpace: "nowrap" }}>
-              NYC-based jazz singer
-            </p>
-            <div style={{ display: "flex", gap: "clamp(8px, 1.2vw, 18px)", alignItems: "center", fontFamily: "'Instrument Serif', serif", fontSize: "clamp(18px, 3.3vw, 50px)" }}>
-              <a href="#about" style={{ color: "#d5c4a8", textDecoration: "none" }}>about</a>
-              <span style={{ color: "rgba(213,196,168,0.35)" }}>x</span>
-              <a href="#media" style={{ color: "#d5c4a8", textDecoration: "none" }}>media</a>
-              <span style={{ color: "rgba(213,196,168,0.35)" }}>x</span>
-              <a href="#contact" style={{ color: "#d5c4a8", textDecoration: "none" }}>contact</a>
+        {/* Nav + subtitle — rotated block, top right */}
+        <div style={{ position: "absolute", left: 812, top: 355, width: 581, height: 260, display: "flex", alignItems: "center", justifyContent: "center" }}>
+          <div style={{ transform: "rotate(-8.93deg)", flexShrink: 0 }}>
+            <div style={{ display: "flex", flexDirection: "column", gap: 13 }}>
+              <p style={{ fontFamily: "'Instrument Serif', serif", fontSize: 74, color: "#ffedd1", margin: 0, lineHeight: "normal", whiteSpace: "nowrap" }}>
+                NYC-based jazz singer
+              </p>
+              <div style={{ display: "flex", gap: 18, alignItems: "center", fontSize: 50, fontFamily: "'Instrument Serif', serif" }}>
+                <a href="#about" style={{ color: "#d5c4a8", textDecoration: "none" }}>about</a>
+                <span style={{ color: "rgba(213,196,168,0.3)" }}>x</span>
+                <a href="#media" style={{ color: "#d5c4a8", textDecoration: "none" }}>media</a>
+                <span style={{ color: "rgba(213,196,168,0.3)" }}>x</span>
+                <a href="#contact" style={{ color: "#d5c4a8", textDecoration: "none" }}>contact</a>
+              </div>
             </div>
           </div>
         </div>
 
-        {/* "Ha Do" — lower left, rotated */}
-        <div style={{ position: "absolute", left: "2%", bottom: "8%", transform: "rotate(-16.79deg)", transformOrigin: "left bottom" }}>
-          <p style={{ fontFamily: "'Instrument Serif', serif", fontStyle: "italic", fontSize: "clamp(80px, 13vw, 204px)", color: "#ff98a7", margin: 0, lineHeight: 1, whiteSpace: "nowrap" }}>
-            Ha Do
-          </p>
+        {/* "Ha Do" — rotated, lower left */}
+        <div style={{ position: "absolute", left: 28, top: 547, width: 491, height: 379, display: "flex", alignItems: "center", justifyContent: "center" }}>
+          <div style={{ transform: "rotate(-16.79deg)", flexShrink: 0 }}>
+            <p style={{ fontFamily: "'Instrument Serif', serif", fontStyle: "italic", fontSize: 204, color: "#ff98a7", margin: 0, lineHeight: "normal", whiteSpace: "nowrap" }}>
+              Ha Do
+            </p>
+          </div>
         </div>
       </section>
 
