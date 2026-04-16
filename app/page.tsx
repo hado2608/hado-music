@@ -1,6 +1,44 @@
 "use client";
 
 import { useState } from "react";
+import MediaCard from "../components/MediaCard";
+
+// ─── MEDIA ITEMS ────────────────────────────────────────────
+// Add your videos here. For TikTok, paste the full URL or just the video ID.
+// For self-hosted video, drop the file in /public/videos/ and use the path.
+// Provide a thumbnail image in /public/images/ for each card.
+//
+// type: "tiktok" | "video"
+// src:  TikTok URL  OR  "/hado-music/videos/my-video.mp4"
+// thumbnail: "/hado-music/images/thumb-1.jpg"  (optional but recommended)
+const MEDIA_ITEMS: {
+  type: "tiktok" | "video";
+  src: string;
+  thumbnail?: string;
+  alt?: string;
+  left: number; top: number; w: number; h: number;
+}[] = [
+  // ── Slot 1 — top-left new box (426×301) ──
+  // { type: "tiktok", src: "https://www.tiktok.com/@you/video/1234", thumbnail: "/hado-music/images/thumb-1.jpg", left: 104, top: 135, w: 426, h: 301 },
+
+  // ── Slot 2 — left tall (452×469) ──
+  // { type: "video", src: "/hado-music/videos/performance.mp4", thumbnail: "/hado-music/images/thumb-2.jpg", left: 102, top: 468, w: 452, h: 469 },
+
+  // ── Slot 3 — center top (298×469) ──
+  // { type: "tiktok", src: "https://www.tiktok.com/@hatchalatte_/video/7628662359266987278", left: 573, top: 241, w: 298, h: 469 },
+
+  // ── Slot 4 — right top (452×469) ──
+  // { type: "video", src: "/hado-music/videos/studio.mp4", thumbnail: "/hado-music/images/thumb-4.jpg", left: 890, top: 308, w: 452, h: 469 },
+
+  // ── Slot 5 — bottom-left small (452×242) ──
+  // { type: "tiktok", src: "YOUR_TIKTOK_URL", left: 99, top: 976, w: 452, h: 242 },
+
+  // ── Slot 6 — center bottom (298×469) ──
+  // { type: "video", src: "/hado-music/videos/live.mp4", thumbnail: "/hado-music/images/thumb-6.jpg", left: 573, top: 751, w: 298, h: 469 },
+
+  // ── Slot 7 — right bottom (452×399) ──
+  // { type: "video", src: "/hado-music/videos/tour.mp4", thumbnail: "/hado-music/images/thumb-7.jpg", left: 888, top: 821, w: 452, h: 399 },
+];
 
 export default function Page() {
   const [copied, setCopied] = useState(false);
@@ -178,18 +216,39 @@ export default function Page() {
             See Ha in her element!
           </p>
 
-          {/* Photo grid */}
+          {/* Media grid — slots defined in MEDIA_ITEMS above page */}
           {([
-            { left: 104, top: 135, w: 426, h: 301 },   // new top-left box
+            { left: 104, top: 135, w: 426, h: 301 },
             { left: 102, top: 468, w: 452, h: 469 },
             { left: 573, top: 241, w: 298, h: 469 },
             { left: 890, top: 308, w: 452, h: 469 },
             { left: 99,  top: 976, w: 452, h: 242 },
             { left: 573, top: 751, w: 298, h: 469 },
             { left: 888, top: 821, w: 452, h: 399 },
-          ] as const).map((box, i) => (
-            <div key={i} style={{ position: "absolute", left: box.left, top: box.top, width: box.w, height: box.h, border: "1px solid #ff98a7" }} />
-          ))}
+          ] as const).map((slot, i) => {
+            const item = MEDIA_ITEMS.find(
+              (m) => m.left === slot.left && m.top === slot.top
+            );
+            if (item) {
+              return (
+                <MediaCard
+                  key={i}
+                  type={item.type}
+                  src={item.src}
+                  thumbnail={item.thumbnail}
+                  alt={item.alt}
+                  style={{ left: slot.left, top: slot.top, width: slot.w, height: slot.h }}
+                />
+              );
+            }
+            // Empty slot — pink outline placeholder
+            return (
+              <div
+                key={i}
+                style={{ position: "absolute", left: slot.left, top: slot.top, width: slot.w, height: slot.h, border: "1px solid #ff98a7" }}
+              />
+            );
+          })}
         </div>
       </section>
 
