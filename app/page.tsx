@@ -19,7 +19,7 @@ const MEDIA_ITEMS: {
   left: number; top: number; w: number; h: number;
 }[] = [
   { type: "tiktok", src: "https://www.tiktok.com/@hatchalatte_/video/7612694937074666765", left: 104, top: 135, w: 426, h: 301 },
-  { type: "tiktok", src: "https://www.tiktok.com/@hatchalatte_/video/7610187360935922957", left: 102, top: 468, w: 452, h: 469 },
+  { type: "tiktok", src: "https://www.tiktok.com/@hatchalatte_/video/7595379215466253582", left: 102, top: 468, w: 452, h: 469 },
   { type: "tiktok", src: "https://www.tiktok.com/@hatchalatte_/video/7624907941530864910", left: 573, top: 241, w: 298, h: 469 },
   { type: "tiktok", src: "https://www.tiktok.com/@hatchalatte_/video/7604302076591541518", left: 890, top: 308, w: 452, h: 469 },
   { type: "tiktok", src: "https://www.tiktok.com/@hatchalatte_/video/7617330022491213070", left: 99,  top: 976, w: 452, h: 242 },
