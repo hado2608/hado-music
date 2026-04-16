@@ -18,26 +18,13 @@ const MEDIA_ITEMS: {
   alt?: string;
   left: number; top: number; w: number; h: number;
 }[] = [
-  // ── Slot 1 — top-left new box (426×301) ──
-  // { type: "tiktok", src: "https://www.tiktok.com/@you/video/1234", thumbnail: "/hado-music/images/thumb-1.jpg", left: 104, top: 135, w: 426, h: 301 },
-
-  // ── Slot 2 — left tall (452×469) ──
-  // { type: "video", src: "/hado-music/videos/performance.mp4", thumbnail: "/hado-music/images/thumb-2.jpg", left: 102, top: 468, w: 452, h: 469 },
-
-  // ── Slot 3 — center top (298×469) ──
-  // { type: "tiktok", src: "https://www.tiktok.com/@hatchalatte_/video/7628662359266987278", left: 573, top: 241, w: 298, h: 469 },
-
-  // ── Slot 4 — right top (452×469) ──
-  // { type: "video", src: "/hado-music/videos/studio.mp4", thumbnail: "/hado-music/images/thumb-4.jpg", left: 890, top: 308, w: 452, h: 469 },
-
-  // ── Slot 5 — bottom-left small (452×242) ──
-  // { type: "tiktok", src: "YOUR_TIKTOK_URL", left: 99, top: 976, w: 452, h: 242 },
-
-  // ── Slot 6 — center bottom (298×469) ──
-  // { type: "video", src: "/hado-music/videos/live.mp4", thumbnail: "/hado-music/images/thumb-6.jpg", left: 573, top: 751, w: 298, h: 469 },
-
-  // ── Slot 7 — right bottom (452×399) ──
-  // { type: "video", src: "/hado-music/videos/tour.mp4", thumbnail: "/hado-music/images/thumb-7.jpg", left: 888, top: 821, w: 452, h: 399 },
+  { type: "tiktok", src: "https://www.tiktok.com/@hatchalatte_/video/7612694937074666765", left: 104, top: 135, w: 426, h: 301 },
+  { type: "tiktok", src: "https://www.tiktok.com/@hatchalatte_/video/7610187360935922957", left: 102, top: 468, w: 452, h: 469 },
+  { type: "tiktok", src: "https://www.tiktok.com/@hatchalatte_/video/7624907941530864910", left: 573, top: 241, w: 298, h: 469 },
+  { type: "tiktok", src: "https://www.tiktok.com/@hatchalatte_/video/7604302076591541518", left: 890, top: 308, w: 452, h: 469 },
+  { type: "tiktok", src: "https://www.tiktok.com/@hatchalatte_/video/7617330022491213070", left: 99,  top: 976, w: 452, h: 242 },
+  { type: "tiktok", src: "https://www.tiktok.com/@hatchalatte_/video/7615036019380964622", left: 573, top: 751, w: 298, h: 469 },
+  { type: "tiktok", src: "https://www.tiktok.com/@hatchalatte_/video/7596739905091423502", left: 888, top: 821, w: 452, h: 399 },
 ];
 
 export default function Page() {
