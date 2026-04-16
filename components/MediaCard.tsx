@@ -10,6 +10,8 @@ interface MediaCardProps {
   src: string;
   /** Optional override thumbnail. If omitted, TikTok cards fetch their own. */
   thumbnail?: string;
+  /** Link to open on click (defaults to src for tiktok). Opens in new tab. */
+  href?: string;
   alt?: string;
   style: React.CSSProperties;
 }
@@ -19,7 +21,8 @@ function getTikTokId(src: string): string {
   return match ? match[1] : src;
 }
 
-export default function MediaCard({ type, src, thumbnail, alt = "", style }: MediaCardProps) {
+export default function MediaCard({ type, src, thumbnail, href, alt = "", style }: MediaCardProps) {
+  const linkUrl = href ?? (type === "tiktok" ? src : undefined);
   const [active, setActive] = useState(false);
   const [autoThumb, setAutoThumb] = useState<string | null>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -64,6 +67,11 @@ export default function MediaCard({ type, src, thumbnail, alt = "", style }: Med
       }}
       onMouseEnter={handleEnter}
       onMouseLeave={handleLeave}
+      onClick={() => {
+        if (!active && linkUrl) {
+          window.open(linkUrl, "_blank", "noopener,noreferrer");
+        }
+      }}
     >
       {/* Thumbnail — fades when video activates */}
       {thumb && (
