@@ -91,17 +91,6 @@ export default function Page() {
                 <a href="#contact" className="nav-link" style={{ color: "#d5c4a8" }}>contact</a>
               </div>
             </div>
-            {/* Small curvy arrow in nav block */}
-            <div style={{ position: "absolute", left: -44, top: 75, width: 214, height: 216, display: "flex", alignItems: "center", justifyContent: "center" }}>
-              <div style={{ transform: "rotate(-51.07deg)", flexShrink: 0 }}>
-                <div style={{ width: 162, height: 144, overflow: "hidden", position: "relative" }}>
-                  <div style={{ position: "absolute", inset: "16.99% 23.1% 20.44% 19.93%" }}>
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src="/hado-music/images/arrow-nav.svg" alt="" aria-hidden style={{ width: "100%", height: "100%", display: "block" }} />
-                  </div>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
 
