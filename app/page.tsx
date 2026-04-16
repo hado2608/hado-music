@@ -63,7 +63,7 @@ export default function Page() {
           backgroundSize: "337px 449px",
           backgroundPosition: "top left",
           mixBlendMode: "soft-light",
-          opacity: 0.8,
+          opacity: 0.25,
           pointerEvents: "none",
         }} />
 
