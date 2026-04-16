@@ -1,14 +1,14 @@
 "use client";
 
-import { useState, useRef, useCallback } from "react";
+import { useState, useRef, useCallback, useEffect } from "react";
 
 type MediaType = "tiktok" | "video";
 
 interface MediaCardProps {
   type: MediaType;
-  /** TikTok: full URL or video ID. Video: path to file in /public */
+  /** TikTok: full URL. Video: path to file e.g. "/hado-music/videos/clip.mp4" */
   src: string;
-  /** Path to thumbnail image in /public. If omitted, shows pink placeholder. */
+  /** Optional override thumbnail. If omitted, TikTok cards fetch their own. */
   thumbnail?: string;
   alt?: string;
   style: React.CSSProperties;
@@ -21,12 +21,23 @@ function getTikTokId(src: string): string {
 
 export default function MediaCard({ type, src, thumbnail, alt = "", style }: MediaCardProps) {
   const [active, setActive] = useState(false);
+  const [autoThumb, setAutoThumb] = useState<string | null>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
+
+  // Auto-fetch TikTok thumbnail via oEmbed (no API key needed)
+  useEffect(() => {
+    if (type !== "tiktok" || thumbnail) return;
+    const oembedUrl = `https://www.tiktok.com/oembed?url=${encodeURIComponent(src)}`;
+    fetch(oembedUrl)
+      .then((r) => r.json())
+      .then((data) => { if (data.thumbnail_url) setAutoThumb(data.thumbnail_url); })
+      .catch(() => {/* silently skip — pink placeholder remains */});
+  }, [type, src, thumbnail]);
 
   const handleEnter = useCallback(() => {
     setActive(true);
     if (type === "video" && videoRef.current) {
-      videoRef.current.play().catch(() => {/* browser blocked — fine */});
+      videoRef.current.play().catch(() => {});
     }
   }, [type]);
 
@@ -39,6 +50,7 @@ export default function MediaCard({ type, src, thumbnail, alt = "", style }: Med
   }, [type]);
 
   const tikTokId = type === "tiktok" ? getTikTokId(src) : "";
+  const thumb = thumbnail ?? autoThumb ?? undefined;
 
   return (
     <div
@@ -53,11 +65,11 @@ export default function MediaCard({ type, src, thumbnail, alt = "", style }: Med
       onMouseEnter={handleEnter}
       onMouseLeave={handleLeave}
     >
-      {/* Thumbnail — visible when idle, fades on hover */}
-      {thumbnail && (
+      {/* Thumbnail — fades when video activates */}
+      {thumb && (
         // eslint-disable-next-line @next/next/no-img-element
         <img
-          src={thumbnail}
+          src={thumb}
           alt={alt}
           style={{
             position: "absolute",
@@ -90,12 +102,12 @@ export default function MediaCard({ type, src, thumbnail, alt = "", style }: Med
         />
       )}
 
-      {/* Self-hosted video */}
+      {/* Self-hosted / downloaded video */}
       {type === "video" && (
         <video
           ref={videoRef}
           src={src}
-          poster={thumbnail}
+          poster={thumb}
           loop
           playsInline
           style={{
