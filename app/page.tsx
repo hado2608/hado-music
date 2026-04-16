@@ -1,6 +1,16 @@
 "use client";
 
+import { useState } from "react";
+
 export default function Page() {
+  const [copied, setCopied] = useState(false);
+
+  function copyEmail() {
+    navigator.clipboard?.writeText("hado.sings@gmail.com");
+    setCopied(true);
+    setTimeout(() => setCopied(false), 1500);
+  }
+
   return (
     <div style={{ backgroundColor: "#342222", display: "flex", flexDirection: "column", alignItems: "center" }}>
 
@@ -196,20 +206,31 @@ export default function Page() {
             </p>
           </div>
 
-          {/* Email row — copy icon appears on hover */}
-          <div className="email-row" style={{ display: "flex", alignItems: "center", marginBottom: 16 }}>
-            <p style={{ fontFamily: "'Instrument Sans', sans-serif", fontSize: 24, color: "#262321", lineHeight: 1.3, margin: 0 }}>
-              For any inquiries, please email{" "}
-              <a href="mailto:hado.sings@gmail.com" style={{ fontWeight: 700, color: "#262321" }}>hado.sings@gmail.com</a>
+          {/* Email — two lines, copy CTA on second line */}
+          <div style={{ textAlign: "center", marginBottom: 16 }}>
+            <p style={{ fontFamily: "'Instrument Sans', sans-serif", fontSize: 24, color: "#262321", lineHeight: 1.3, margin: "0 0 8px" }}>
+              For any inquiries, please email
             </p>
-            <button
-              className="email-copy-btn"
-              aria-label="Copy email address"
-              onClick={() => navigator.clipboard?.writeText("hado.sings@gmail.com")}
-            >
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/hado-music/images/copy.svg" alt="" style={{ width: 24, height: 24 }} />
-            </button>
+            <div className="email-row" style={{ display: "inline-flex", alignItems: "center", gap: 10 }}>
+              <a href="mailto:hado.sings@gmail.com" style={{ fontFamily: "'Instrument Sans', sans-serif", fontWeight: 700, fontSize: 24, color: "#262321", lineHeight: 1.3 }}>
+                hado.sings@gmail.com
+              </a>
+              <button
+                className="email-copy-btn"
+                aria-label="Copy email address"
+                onClick={copyEmail}
+                style={{ fontFamily: "'Instrument Sans', sans-serif", fontSize: 14, fontWeight: 500, color: "#262321", whiteSpace: "nowrap" }}
+              >
+                {copied ? (
+                  "Copied!"
+                ) : (
+                  <>
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src="/hado-music/images/copy.svg" alt="Copy" style={{ width: 22, height: 22 }} />
+                  </>
+                )}
+              </button>
+            </div>
           </div>
 
           {/* "or fill out this form:" */}
